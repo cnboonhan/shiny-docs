@@ -38,6 +38,7 @@ forward-socks5t / 127.0.0.1:1080 .
 listen-address 0.0.0.0:1090
 
 # Start privoxy
+apt install privoxy
 privoxy /etc/config
 
 # Create Socks Proxy
