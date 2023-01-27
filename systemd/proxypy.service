@@ -1,0 +1,17 @@
+# /etc/systemd/system/proxypy.service
+# systemctl  daemon-reload
+# systemctl enable proxypy.service && systemctl start proxypy.service
+
+[Install]
+WantedBy=multi-user.target
+
+[Unit]
+Description=proxypy
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+User=ubuntu
+ExecStart=/home/ubuntu/.local/bin/proxy --hostname 0.0.0.0 --port 8899
