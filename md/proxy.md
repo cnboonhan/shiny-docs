@@ -14,3 +14,8 @@ curl https://example.com -x sock5h://127.0.0.1:1080
 ```
 git clone git@github.com:cnboonhan/conf.git -c http.sslverify=false -c http.proxy=socks5h://127.0.0.1:1080
 ```
+
+# proxy forwarding of remote port via ProxyJump
+```
+ssh -L 1090:127.0.0.1:1090 -J cnboonhan@10.3.141.1 root@192.168.42.129 -p 8022 
+```
