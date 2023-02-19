@@ -19,3 +19,8 @@ git clone git@github.com:cnboonhan/conf.git -c http.sslverify=false -c http.prox
 ```
 ssh -L 1090:127.0.0.1:1090 -J cnboonhan@10.3.141.1 root@192.168.42.129 -p 8022 
 ```
+
+# Use Host DNS for VirtualBox
+```
+VBoxManage modifyvm "<VM name>" --natdnshostresolver1 on
+```
