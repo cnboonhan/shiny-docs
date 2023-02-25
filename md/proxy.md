@@ -15,9 +15,19 @@ curl https://example.com -x sock5h://127.0.0.1:1080
 git clone git@github.com:cnboonhan/conf.git -c http.sslverify=false -c http.proxy=socks5h://127.0.0.1:1080
 ```
 
-# proxy forwarding of remote port via ProxyJump
+# proxy local forwarding via ProxyJump
 ```
+# ssh -L [LOCAL_IP:]LOCAL_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
+# In this forwarding type, the SSH client listens on a given client port and tunnels any connection to that port to the specified port on the remote SSH server, which then connects to a port on the destination machine. 
 ssh -L 1090:127.0.0.1:1090 -J cnboonhan@10.3.141.1 root@192.168.42.129 -p 8022 
+```
+
+# remote forwarding
+```
+# enable GatewayPorts on sshd_config on remote for 0.0.0.0 on server
+# ssh -R [REMOTE:]REMOTE_PORT:DESTINATION:DESTINATION_PORT [USER@]SSH_SERVER
+# In this forwarding type, the SSH server listens on a given server port and tunnels any connection to that port to the specified client port on the local SSH client, which then connects to a port on the destination machine. The destination machine can be the local or any other machine.
+ssh root@192.168.1.1 -R 0.0.0.0:6080:0.0.0.0:6080 -p 22
 ```
 
 # create SOCKS proxy from external ssh
