@@ -19,4 +19,8 @@ console=serial0,115200 console=tty1 root=PARTUUID=1489b6de-02 rootfstype=ext4 fs
 
 # /boot/config.txt ( append )
 dtoverlay=dwc2
+
+# sudo crontab -e
+* * * * * ip route del default via 192.168.23.1
+* * * * * iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 ```
