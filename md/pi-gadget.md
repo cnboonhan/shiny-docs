@@ -30,4 +30,14 @@ net.ipv4.ip_forward=1
 alias stop_wifi="sudo pkill wpa_supplicant"
 alias wifi="sudo wpa_supplicant -iwlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf  -B && sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE"
 alias fix_route="sudo ip route del default via 192.168.23.1"
+
+# wifi
+wpa_passphrase [ssid] [password]
+
+# /etc/ssh/sshd_config ( edit )
+PermitEmptyPasswords yes
+PermitRootLogin yes
+
+# remove password
+sudo passwd -d `whoami`
 ```
