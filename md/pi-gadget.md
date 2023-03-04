@@ -41,17 +41,16 @@ apt install iptables-persistent
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 iptables-save > /etc/iptables/rules.v4
 
-# /etc/ssh/sshd_config ( edit )
-PermitEmptyPasswords yes
-PermitRootLogin yes
-
 # On openwrt router, generate keypair
-mkdir ~/.ssh
-cd ~/.ssh
-dropbearkey -t rsa -f id_dropbear
+mkdir ~/.ssh && cd ~/.ssh
+/usr/bin/dropbearkey -t rsa -f id_dropbear
 
 # Copy private key into authorized_keys in pi ~/.ssh/authorized_keys
 
-# OR delete password
+# OR delete password: 
+# /etc/ssh/sshd_config ( edit )
+PermitEmptyPasswords yes
+PermitRootLogin yes
+# run
 sudo passwd -d `whoami`
 ```
