@@ -41,7 +41,16 @@ apt install iptables-persistent
 iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 iptables-save > /etc/iptables/rules.v4
 
-# On openwrt router, generate keypair
+# On openwrt router
+
+# Set /etc/config/dropbear
+config dropbear
+        option GatewayPorts 'on'
+        option PasswordAuth 'on'
+        option RootPasswordAuth 'on'
+        option Port         '22'
+
+# generate keypair
 mkdir ~/.ssh && cd ~/.ssh
 /usr/bin/dropbearkey -t rsa -f id_dropbear
 
