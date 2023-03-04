@@ -50,5 +50,8 @@ mkdir ~/.ssh
 cd ~/.ssh
 dropbearkey -t rsa -f id_dropbear
 
-# Copy private key into authorized_keys in pi
+# Copy private key into authorized_keys in pi ~/.ssh/authorized_keys
+
+# OR delete password
+sudo passwd -d `whoami`
 ```
