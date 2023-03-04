@@ -22,7 +22,6 @@ dtoverlay=dwc2
 
 # sudo crontab -e
 * * * * * ip route del default via 192.168.23.1
-* * * * * iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
 
 # /etc/sysctl.conf
 net.ipv4.ip_forward=1
@@ -36,6 +35,11 @@ alias fix_route="sudo ip route del default via 192.168.23.1"
 wpa_passphrase [ssid] [password] > /etc/wpa_supplicant/wpa_supplicant@wlan0.conf
 systemctl start wpa_supplicant@wlan0.service
 systemctl enable wpa_supplicant@wlan0.service
+
+# save iptables
+apt install iptables-persistent
+iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+iptables-save > /etc/iptables/rules.v4
 
 # /etc/ssh/sshd_config ( edit )
 PermitEmptyPasswords yes
