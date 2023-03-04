@@ -45,6 +45,10 @@ iptables-save > /etc/iptables/rules.v4
 PermitEmptyPasswords yes
 PermitRootLogin yes
 
-# remove password
-sudo passwd -d `whoami`
+# On openwrt router, generate keypair
+mkdir ~/.ssh
+cd ~/.ssh
+dropbearkey -t rsa -f id_dropbear
+
+# Copy private key into authorized_keys in pi
 ```
