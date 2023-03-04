@@ -32,7 +32,9 @@ alias wifi="sudo wpa_supplicant -iwlan0 -c /etc/wpa_supplicant/wpa_supplicant.co
 alias fix_route="sudo ip route del default via 192.168.23.1"
 
 # wifi
-wpa_passphrase [ssid] [password]
+wpa_passphrase [ssid] [password] > /etc/wpa_supplicant/wpa_supplicant@wlan0.conf
+systemctl start wpa_supplicant@wlan0.service
+systemctl enable wpa_supplicant@wlan0.service
 
 # /etc/ssh/sshd_config ( edit )
 PermitEmptyPasswords yes
