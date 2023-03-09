@@ -52,7 +52,8 @@ config dropbear
 
 # generate keypair
 mkdir ~/.ssh && cd ~/.ssh
-/usr/bin/dropbearkey -t rsa -f id_dropbear
+/usr/bin/dropbearkey -t id_rsa -f id_dropbear
+/usr/bin/dropbearkey -y -f id_rsa | grep "^ssh-rsa " > id_rsa.pub
 
 # Copy private key into authorized_keys in pi ~/.ssh/authorized_keys
 
