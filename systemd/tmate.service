@@ -9,5 +9,5 @@ After=network-online.target
 [Service]
 Type=simple
 Restart=always
-User=root
-ExecStart=/usr/local/bin/tmate -F
+User=cnboonhan
+ExecStart=/bin/tmate -F -f /home/cnboonhan/.tmate.conf
