@@ -18,6 +18,9 @@ ssh -L 1090:127.0.0.1:1090 -J cnboonhan@10.3.141.1 root@192.168.42.129 -p 8022
 # In this forwarding type, the SSH server listens on a given server port and tunnels any connection to that port to the specified client port on the local SSH client, which then connects to a port on the destination machine. The destination machine can be the local or any other machine.
 ssh root@192.168.1.1 -R 0.0.0.0:6080:0.0.0.0:6080 -p 22
 
+# ssh tunnel in background
+ssh -fN -L 8080:127.0.0.1:80 Host
+
 # create SOCKS proxy from external ssh
 ssh -t -R 127.0.0.1:2222:127.0.0.1:22 cnboonhan@10.3.141.1 'ssh cnboonhan@127.0.0.1 -p 2222 -D 1080'
 
